@@ -16,7 +16,29 @@ public class CalculationsTest {
 
     @Test
     public void testSum() throws Exception {
-        assertEquals(5, calculationsUnderTest.calculate(Operation.SUM, 2, 3), 0.01);
+        assertEquals(9, calculationsUnderTest.calculate(Operation.SUM, 3, 3, 3), 0.01);
+    }
+    @Test
+    public void testSubtract() throws Exception {
+        assertEquals(3, calculationsUnderTest.calculate(Operation.SUBTRACT, 9, 3, 3), 0.01);
+    }
+    @Test
+    public void testDivide() throws Exception {
+        assertEquals(1.5, calculationsUnderTest.calculate(Operation.DIVIDE, 9, 3, 2), 0.01);
+        try {
+            assertEquals(6, calculationsUnderTest.calculate(Operation.DIVIDE, 3, 0, 3), 0.01);
+        }
+        catch (Exception e) {
+            String expectedMessage = "this is the message I expect to get"+ e.getMessage();
+        }
+    }
+    @Test
+    public void testMultiply() throws Exception {
+        assertEquals(27, calculationsUnderTest.calculate(Operation.MULTIPLY, 3, 3, 3), 0.01);
+    }
+    @Test
+    public void testAverage() throws Exception {
+        assertEquals(3, calculationsUnderTest.calculate(Operation.AVERAGE, 3, 3, 3), 0.01);
     }
 
     @After
